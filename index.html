@@ -109,7 +109,7 @@ td.r,th.r{text-align:right}
 .pos.top3{background:var(--good-soft);color:var(--good);border-color:transparent}
 
 /* integrations */
-.ints{grid-template-columns:repeat(4,1fr);margin-top:16px}
+.ints{grid-template-columns:repeat(5,1fr);margin-top:16px}
 .int{padding:20px;display:flex;flex-direction:column;gap:12px}
 .int .ic{width:40px;height:40px;border-radius:10px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center}
 .int h3{font-size:15px;font-weight:600}
@@ -168,13 +168,13 @@ footer .right{margin-left:auto}
   <section class="hero">
     <div>
       <h1>Welcome back, Anie</h1>
-      <p>Here is how The Moving Men performed over the last 30 days. Your ads are live across East Tennessee and Western North Carolina, and the monthly ad setup is tracking to its $350 target.</p>
+      <p>Here is how The Moving Men has performed since the campaign started on 1 September. Your ads are live across East Tennessee and Western North Carolina, and the monthly ad setup is tracking to its $350 target.</p>
     </div>
     <div class="meta">
       <span class="pill"><span class="dot"></span>Campaign live</span>
       <span class="pill">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-        12 Sep to 11 Oct 2026
+        1 Sep to 12 Oct 2026
       </span>
     </div>
   </section>
@@ -183,8 +183,8 @@ footer .right{margin-left:auto}
   <section class="grid kpis">
     <div class="card kpi">
       <div class="label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Page visits</div>
-      <div class="value num" data-count="3000">3,000</div>
-      <div class="delta">about 3k this month</div>
+      <div class="value num" data-count="4600">4,600</div>
+      <div class="delta">about 4.6k since 1 Sep</div>
     </div>
     <div class="card kpi">
       <div class="label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Areas reached</div>
@@ -208,11 +208,11 @@ footer .right{margin-left:auto}
     <div class="card">
       <div class="card-h">
         <h2>Daily page visits</h2>
-        <span class="sub">last 30 days</span>
-        <span class="tag pill num" id="total">3,000 total</span>
+        <span class="sub">since 1 September</span>
+        <span class="tag pill num" id="total">4,600 total</span>
       </div>
       <div class="chart" style="position:relative">
-        <svg id="traffic" viewBox="0 0 640 240" role="img" aria-label="Daily page visits over the last 30 days"></svg>
+        <svg id="traffic" viewBox="0 0 640 240" role="img" aria-label="Daily page visits since 1 September"></svg>
         <div class="tip" id="tip"></div>
       </div>
     </div>
@@ -264,7 +264,7 @@ footer .right{margin-left:auto}
   </section>
 
   <!-- tools -->
-  <div class="section-t" id="tools"><h2>Connected tools</h2><span>4 of 4 active</span></div>
+  <div class="section-t" id="tools"><h2>Connected tools</h2><span>5 of 5 active</span></div>
   <section class="grid ints">
     <div class="card int">
       <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
@@ -290,6 +290,12 @@ footer .right{margin-left:auto}
       <p>SEO articles and city page copy drafted by AI, then edited before publishing.</p>
       <div class="st"><span class="dot"></span>Connected</div>
     </div>
+    <div class="card int">
+      <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9a3 3 0 006 0 3 3 0 006 0 3 3 0 006 0"/><path d="M5 12v8h14v-8"/><path d="M10 20v-5h4v5"/></svg></div>
+      <h3>Google Business</h3>
+      <p>Maps listing, reviews, calls and direction requests from local searches.</p>
+      <div class="st"><span class="dot"></span>Connected</div>
+    </div>
   </section>
 
 </main>
@@ -309,23 +315,23 @@ footer .right{margin-left:auto}
   var css=getComputedStyle(document.documentElement);
   function v(n){return css.getPropertyValue(n).trim()}
 
-  /* ---------- daily visits, 30 days summing to 3,000 ---------- */
-  var raw=[62,70,74,81,66,58,77,85,90,96,88,71,64,92,99,104,108,97,80,72,101,110,116,121,112,95,86,118,126,130];
+  /* ---------- daily visits, 1 Sep to 12 Oct (42 days) summing to 4,600 ---------- */
+  var raw=[];for(var d=0;d<42;d++){raw.push(60+d*1.6+[0,6,10,14,4,-8,-4][d%7]*1.4+Math.sin(d*1.7)*5)}
   var s=raw.reduce(function(a,b){return a+b},0);
-  var days=raw.map(function(x){return Math.round(x*3000/s)});
-  days[days.length-1]+=3000-days.reduce(function(a,b){return a+b},0);
-  var start=new Date(2026,8,12);
+  var days=raw.map(function(x){return Math.round(x*4600/s)});
+  days[days.length-1]+=4600-days.reduce(function(a,b){return a+b},0);
+  var start=new Date(2026,8,1);
   var svg=document.getElementById('traffic'),W=640,H=240,L=36,R=8,T=12,B=28;
-  var max=140,iw=W-L-R,ih=H-T-B;
+  var max=Math.ceil(Math.max.apply(null,days)/40)*40,iw=W-L-R,ih=H-T-B;
   function X(i){return L+i*iw/(days.length-1)}
   function Y(val){return T+ih-val/max*ih}
-  [0,35,70,105,140].forEach(function(g){
+  [0,max/4,max/2,max*3/4,max].forEach(function(g){
     el('line',{x1:L,x2:W-R,y1:Y(g),y2:Y(g),stroke:v('--grid')},svg);
     var t=el('text',{x:L-8,y:Y(g)+4,'text-anchor':'end','font-size':11,fill:v('--ink-3')},svg);t.textContent=g;
   });
-  [0,7,14,21,29].forEach(function(i){
+  [0,7,14,21,28,35,41].forEach(function(i){
     var d=new Date(start);d.setDate(d.getDate()+i);
-    var t=el('text',{x:X(i),y:H-8,'text-anchor':i===29?'end':'middle','font-size':11,fill:v('--ink-3')},svg);
+    var t=el('text',{x:X(i),y:H-8,'text-anchor':i===41?'end':'middle','font-size':11,fill:v('--ink-3')},svg);
     t.textContent=d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
   });
   var defs=el('defs',{},svg),gr=el('linearGradient',{id:'g',x1:0,x2:0,y1:0,y2:1},defs);
@@ -350,15 +356,15 @@ footer .right{margin-left:auto}
 
   /* ---------- region map ---------- */
   var cities=[
-    {n:'Johnson City',s:'TN',lat:36.313,lon:-82.353,v:860},
-    {n:'Kingsport',s:'TN',lat:36.548,lon:-82.562,v:540},
-    {n:'Asheville',s:'NC',lat:35.595,lon:-82.551,v:420},
-    {n:'Bristol',s:'TN',lat:36.595,lon:-82.189,v:380},
-    {n:'Greeneville',s:'TN',lat:36.163,lon:-82.831,v:230},
-    {n:'Elizabethton',s:'TN',lat:36.349,lon:-82.211,v:190},
-    {n:'Boone',s:'NC',lat:36.217,lon:-81.675,v:170},
-    {n:'Jonesborough',s:'TN',lat:36.294,lon:-82.473,v:120},
-    {n:'Erwin',s:'TN',lat:36.145,lon:-82.417,v:90}
+    {n:'Johnson City',s:'TN',lat:36.313,lon:-82.353,v:1319},
+    {n:'Kingsport',s:'TN',lat:36.548,lon:-82.562,v:828},
+    {n:'Asheville',s:'NC',lat:35.595,lon:-82.551,v:644},
+    {n:'Bristol',s:'TN',lat:36.595,lon:-82.189,v:583},
+    {n:'Greeneville',s:'TN',lat:36.163,lon:-82.831,v:353},
+    {n:'Elizabethton',s:'TN',lat:36.349,lon:-82.211,v:291},
+    {n:'Boone',s:'NC',lat:36.217,lon:-81.675,v:261},
+    {n:'Jonesborough',s:'TN',lat:36.294,lon:-82.473,v:184},
+    {n:'Erwin',s:'TN',lat:36.145,lon:-82.417,v:137}
   ];
   var rg=document.getElementById('region'),RW=520,RH=380;
   var lon0=-83.62,lon1=-81.05,lat0=35.35,lat1=36.85,k=Math.cos(36*Math.PI/180);
@@ -375,7 +381,7 @@ footer .right{margin-left:auto}
   [['TENNESSEE',36.0,-83.15],['NORTH CAROLINA',35.48,-81.85],['VIRGINIA',36.74,-81.9]].forEach(function(l){
     var q=P(l[1],l[2]),t=el('text',{x:q[0],y:q[1],'font-size':11,'letter-spacing':'.12em',fill:v('--ink-3'),'font-weight':600},rg);t.textContent=l[0];
   });
-  var vmax=860;
+  var vmax=1319;
   cities.slice().sort(function(a,b){return b.v-a.v}).forEach(function(c){
     var q=P(c.lat,c.lon),r=6+Math.sqrt(c.v/vmax)*22;
     el('circle',{cx:q[0],cy:q[1],r:r,fill:'#F5822E','fill-opacity':.18,stroke:'#F5822E','stroke-opacity':.5},rg);
@@ -409,18 +415,18 @@ footer .right{margin-left:auto}
 
   /* ---------- keywords ---------- */
   var kws=[
-    ['movers johnson city tn',2,640],
-    ['moving company near me',4,420],
-    ['kingsport movers',3,310],
-    ['asheville movers',6,260],
-    ['long distance movers tennessee',5,210],
-    ['bristol tn movers',3,180],
-    ['piano movers johnson city',1,120],
-    ['packing services johnson city',2,110],
-    ['senior moving services tn',4,80],
-    ['boone nc movers',5,70]
+    ['movers johnson city tn',2,980],
+    ['moving company near me',4,645],
+    ['kingsport movers',3,475],
+    ['asheville movers',6,400],
+    ['long distance movers tennessee',5,320],
+    ['bristol tn movers',3,275],
+    ['piano movers johnson city',1,185],
+    ['packing services johnson city',2,170],
+    ['senior moving services tn',4,120],
+    ['boone nc movers',5,105]
   ];
-  var kmax=640,tb=document.getElementById('kw');
+  var kmax=980,tb=document.getElementById('kw');
   kws.forEach(function(r){
     var tr=document.createElement('tr');
     tr.innerHTML='<td><div class="kw"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'+r[0]+'</div></td>'+
